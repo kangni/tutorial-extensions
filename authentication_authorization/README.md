@@ -35,7 +35,7 @@ Hooray, we've reached part of our goal!! Now other people can't create posts on 
 
 We could now try to do lots of magical stuff to implement users and passwords and authentication, but doing this correctly is rather complicated. As Django is "batteries included", someone has done the hard work for us, so we will make further use of the authentication tools provided.
 
-In your `mysite/urls.py` add a url `url(r'^accounts/login/$', views.login)`. So the file should now look similar to this:
+In your `mysite/urls.py` add a url `url(r'^accounts/login/$', views.login, name='login')`. So the file should now look similar to this:
 
 ```python
 from django.conf.urls import include, url
@@ -60,7 +60,7 @@ Then we need a template for the login page, so create a directory `blog/template
         <p>Your username and password didn't match. Please try again.</p>
     {% endif %}
 
-    <form method="post" action="{% url 'login' %}">
+    <form method="POST" action="{% url 'login' %}">
     {% csrf_token %}
         <table>
         <tr>
